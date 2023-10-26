@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .buttonView {
+    margin-top: 40px;
+  }
+  
+  .centeredContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .gameBoard {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 15px;
+    padding-bottom: 60px;
+    padding-top: 100px;
+  }
+
+.col {
+    padding: 0 !important
+}

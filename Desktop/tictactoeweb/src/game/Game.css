@@ -17,11 +17,10 @@
   .gameBoard {
     display: flex;
     flex-wrap: wrap;
-    margin-left: 15px;
     padding-bottom: 60px;
     padding-top: 100px;
   }
 
-.col {
-    padding: 0 !important
-}
+  .col{
+    padding: 0 !important;
+  }

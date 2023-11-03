@@ -1,4 +1,5 @@
-import React from 'react';
+import React  from 'react';
+import {useRef} from 'react';
 import { PlayerIndicatorProps } from './PlayerIndicator.interface';
 import { IoEllipseOutline, IoCloseOutline } from "react-icons/io5";
 import './PlayerIndicator.css'; 
@@ -7,9 +8,9 @@ export const PlayerIndicator = ({ systemImageName }: PlayerIndicatorProps) => {
     return (
         <div className="container">
           {systemImageName === 'ellipse' ? (
-            <IoEllipseOutline size={120} className='icon' />
+            <IoEllipseOutline className='icon' size={60}/>
           ) : systemImageName === 'close' ? (
-            <IoCloseOutline size={120} className="icon" />
+            <IoCloseOutline  className="icon" size={60}/>
           ) : null}
         </div>
       );

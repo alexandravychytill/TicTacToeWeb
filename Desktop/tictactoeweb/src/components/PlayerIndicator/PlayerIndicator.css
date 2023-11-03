@@ -6,8 +6,21 @@
     height: 200;
     color: white;
     background-color: transparent !important;
+    size: 120;
 }
 
 .container{
     background-color: transparent !important;
+}
+
+@media (max-width: 350px) {
+    .icon{
+        size: 40;
+    }
+}
+
+@media (max-width: 380px) {
+    .icon {
+        size: 40;
+    }
 }

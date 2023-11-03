@@ -10,6 +10,7 @@ import {
 export default function App() {
   return (
           <Routes>
+              <Route path="/TicTacToeWeb" element={<Home />} />
               <Route path="/Home" element={<Home />} />
               <Route path="/Game" element={<Game />} />
           </Routes>

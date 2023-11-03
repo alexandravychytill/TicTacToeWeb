@@ -6,14 +6,21 @@ import { useNavigate } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
+import { Alert } from '../components/Alert/Alert';
 
 const Game = () => {
   const [isPlayer1, setIsPlayer1] = useState(true);
   const [gameState, setGameState] = useState(Array(9).fill(''));
   const [message, setMessage] = useState('');
+  const [alertMessage, setAlertMessage] = useState('');
   const navigate = useNavigate();
+  const [showAlert, setShowAlert] = useState(false);
 
+  const showAlertMessage = (message: string) => {
+    setAlertMessage(message)
+    setShowAlert(true);
+  };
+ 
   const winningPatterns = [
     [0, 1, 2],
     [3, 4, 5],
@@ -28,7 +35,7 @@ const Game = () => {
   const handleEndGame = () => {
     setTimeout(() => {
         navigate("/Home");
-      }, 1000); 
+      }, 500); 
   };
 
   const handlePlayerMove = (position: any) => {
@@ -54,35 +61,21 @@ const Game = () => {
         currentGameState[a] === currentGameState[c]
       ) {
         // Win condition is met
-        showWinAlert();
+        showAlertMessage(`${message} won!`);
         return;
       }
     }
 
     if (!currentGameState.includes('')) {
       // Game is a draw
-      showDrawAlert();
+      showAlertMessage(`The game is drawn`);
     }
   };
 
 
   useEffect(() => {
-    setMessage(isPlayer1 ? 'Player 0' : 'Player X');
+    setMessage(isPlayer1 ? 'Player O' : 'Player X');
   }, [isPlayer1, setIsPlayer1, gameState]);
-
-  const showWinAlert = () => {
-    setTimeout(() => {
-        alert(`${message} won!`);
-    }, 100); 
-    handleEndGame();
-  };
-
-  const showDrawAlert = () => {
-    setTimeout(() => {
-        alert('The game is a draw.');
-    }, 100); 
-    handleEndGame();
-  };
 
   function renderSquare(i: number) {
     return  <GameSquareView index={i} image={gameState[i] === '1' ? 'ellipse' : 'close'} key={i} onPress={() => handlePlayerMove(i)}/> 
@@ -113,6 +106,7 @@ const Game = () => {
             <Col>{renderSquare(8)}</Col>
         </Row>
         </Container>
+        {showAlert ? <Alert onClose={() => navigate("/Home")} message={alertMessage}/> : null}
         </div>
       </div>
     </div>
